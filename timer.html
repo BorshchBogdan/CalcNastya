@@ -8,10 +8,8 @@
         .firstField {
             width: 700px;
             height: 30px;
-
             float: left;
             margin: 10px;
-
 
         }
 
@@ -19,65 +17,85 @@
 </head>
 
 <body>
+
     <div class="firstField">1
         <input type="time" class="firstDay1">
         <input type="time" class="secondDay1">
 
-        <input type="text" placeholder="Кількість годин" class="summuryTime">
+        <input type="text" placeholder="Кількість годин" class="summuryTime" disabled="disabled" >
+        <input type="text" placeholder="Кількість в хвилинах" class="summuryTimeMin" disabled="disabled" >
     </div>
     <div class="firstField">2
         <input type="time" class="firstDay1">
         <input type="time" class="secondDay1">
 
-        <input type="text" placeholder="Кількість годин" class="summuryTime">
+        <input type="text" placeholder="Кількість годин" class="summuryTime" disabled="disabled" >
+        <input type="text" placeholder="Кількість в хвилинах" class="summuryTimeMin" disabled="disabled" >
+
     </div>
     <div class="firstField">3
         <input type="time" class="firstDay1">
         <input type="time" class="secondDay1">
 
-        <input type="text" placeholder="Кількість годин" class="summuryTime">
+        <input type="text" placeholder="Кількість годин" class="summuryTime" disabled="disabled" >
+        <input type="text" placeholder="Кількість в хвилинах" class="summuryTimeMin" disabled="disabled" >
+
     </div>
     <div class="firstField">4
         <input type="time" class="firstDay1">
         <input type="time" class="secondDay1">
 
-        <input type="text" placeholder="Кількість годин" class="summuryTime">
+        <input type="text" placeholder="Кількість годин" class="summuryTime" disabled="disabled" >
+        <input type="text" placeholder="Кількість в хвилинах" class="summuryTimeMin" disabled="disabled" >
+
     </div>
     <div class="firstField">5
         <input type="time" class="firstDay1">
         <input type="time" class="secondDay1">
 
-        <input type="text" placeholder="Кількість годин" class="summuryTime">
+        <input type="text" placeholder="Кількість годин" class="summuryTime" disabled="disabled" >
+        <input type="text" placeholder="Кількість в хвилинах" class="summuryTimeMin" disabled="disabled" >
+
     </div>
     <div class="firstField">6
         <input type="time" class="firstDay1">
         <input type="time" class="secondDay1">
 
-        <input type="text" placeholder="Кількість годин" class="summuryTime">
+        <input type="text" placeholder="Кількість годин" class="summuryTime" disabled="disabled" >
+        <input type="text" placeholder="Кількість в хвилинах" class="summuryTimeMin" disabled="disabled" >
+
     </div>
     <div class="firstField">7
         <input type="time" class="firstDay1">
         <input type="time" class="secondDay1">
 
-        <input type="text" placeholder="Кількість годин" class="summuryTime">
+        <input type="text" placeholder="Кількість годин" class="summuryTime" disabled="disabled" >
+        <input type="text" placeholder="Кількість в хвилинах" class="summuryTimeMin" disabled="disabled" >
+
     </div>
     <div class="firstField">8
         <input type="time" class="firstDay1">
         <input type="time" class="secondDay1">
 
-        <input type="text" placeholder="Кількість годин" class="summuryTime">
+        <input type="text" placeholder="Кількість годин" class="summuryTime" disabled="disabled" >
+        <input type="text" placeholder="Кількість в хвилинах" class="summuryTimeMin" disabled="disabled" >
+
     </div>
     <div class="firstField">9
         <input type="time" class="firstDay1">
         <input type="time" class="secondDay1">
 
-        <input type="text" placeholder="Кількість годин" class="summuryTime">
+        <input type="text" placeholder="Кількість годин" class="summuryTime" disabled="disabled" >
+        <input type="text" placeholder="Кількість в хвилинах" class="summuryTimeMin" disabled="disabled" >
+
     </div>
     <div class="firstField">10
         <input type="time" class="firstDay1">
         <input type="time" class="secondDay1">
 
-        <input type="text" placeholder="Кількість годин" class="summuryTime">
+        <input type="text" placeholder="Кількість годин" class="summuryTime" disabled="disabled" >
+        <input type="text" placeholder="Кількість в хвилинах" class="summuryTimeMin" disabled="disabled" >
+
     </div>
 
 
@@ -85,43 +103,67 @@
         <input type="button" value="Порахувати" class="count">
     </div>
     <div class="firstField">
-        <input type="text" placeholder="Сума">
+        <input type="number"   class="allSumm">  Загальна сума пропрацьованих хвилин
+    </div>
+    <div class="firstField">
+        <input type="number" class="allSummGrn" border="5"> Заробіток
+        
     </div>
 
     <script>
         var firstDay1 = document.getElementsByClassName('firstDay1');
         var secondDay1 = document.getElementsByClassName('secondDay1');
         var summuryTime = document.getElementsByClassName('summuryTime');
+        var summuryTimeMin = document.getElementsByClassName('summuryTimeMin');
         var count = document.querySelector('.count');
+        var allSumm = document.querySelector('.allSumm');
+        var allSummGrn = document.querySelector('.allSummGrn');
+        var summ = 0;
+ 
 
 
         count.addEventListener('click', function() {
 
             for (var i = 0; i < firstDay1.length; i++) {
-                var integerTime1 = +(60 * (parseInt(firstDay1[i].value)));
+                var integerTime1 = (60 * (parseInt(firstDay1[i].value)));
                 var floatTime1 = +firstDay1[i].value.slice(3, 5);
 
-
-
-
-                var integerTime2 = +(60 * (parseInt(secondDay1[i].value)));
+                var integerTime2 = (60 * (parseInt(secondDay1[i].value)));
                 var floatTime2 = +secondDay1[i].value.slice(3, 5);
 
                 var summ1 = (integerTime1 + floatTime1);
                 var summ2 = (integerTime2 + floatTime2);
 
                 var difference = (summ2 - summ1);
-                var amountTime = (parseInt(difference / 60)) + '.' + (difference % 60);
+                var min = (difference % 60);
 
+
+                summuryTimeMin[i].value = difference;
+
+                if (isNaN(summuryTimeMin[i].value)) {
+                    summuryTimeMin[i].value = 0;
+                }
+
+                if (min < 10) {
+                    var amountTime = (parseInt(difference / 60) + '.0' + min);
+
+                } else {
+                    var amountTime = (parseInt(difference / 60) + '.' + min);
+                }
                 summuryTime[i].value = amountTime;
+                if (isNaN(summuryTime[i].value)) {
+                    summuryTime[i].value = 0;
+                }
+                
+   summ +=(+(summuryTimeMin[i].value));
+                allSumm.value=summ;
+                allSummGrn.value=(summ*0.55).toFixed(2);
+                 
             }
 
         });
 
     </script>
-
-
-
 </body>
 
 </html>
